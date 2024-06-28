@@ -1,16 +1,13 @@
-# flutter_application_1
+# Device-Agnostic Design Course Project I - a9e342e8-ed65-40fe-8da0-93a149d0fe3a
 
-A new Flutter project.
+Write your documentation for the project below.
 
-## Getting Started
+TODO: Name of the application
 
-This project is a starting point for a Flutter application.
+TODO: Brief description of the application
 
-A few resources to get you started if this is your first Flutter project:
+TODO: 3 key challenges faced during the project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+TODO: 3 key learning moments from working on the project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TODO: list of dependencies and their versions
