@@ -23,6 +23,10 @@ class TopicService {
                   .watch(questionProvider.notifier)
                   .update((state) => state = question);
 
+              ref
+                  .watch(correctnessProvider.notifier)
+                  .update((state) => state = -1);
+
               navigateToQuestion();
             },
             child: Text(topic.name)));
@@ -30,6 +34,9 @@ class TopicService {
 
       widgets.add(const Spacer());
     }
+
+    ref.watch(topicsWidgetProvider.notifier).update((state) => state = widgets);
+    ref.watch(topicsProvider.notifier).update((state) => state = topics);
 
     return widgets;
   }

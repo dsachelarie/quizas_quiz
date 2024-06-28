@@ -18,7 +18,7 @@ class HomeScreen extends ConsumerWidget {
         child: Scaffold(
             appBar: AppBar(
                 title: const Center(
-                    child: Text("Kushchalla", style: TextStyle(fontSize: 30))),
+                    child: Text("Quizas Quiz", style: TextStyle(fontSize: 30))),
                 bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(30),
                     child: TextButton(
