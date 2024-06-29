@@ -8,5 +8,5 @@ class Question {
 
   Question(this.topicId, this.id, this.question, this.answers,
       this.correctAnswerPath,
-      {this.imageUrl = null});
+      {this.imageUrl});
 }

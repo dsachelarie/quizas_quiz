@@ -27,6 +27,10 @@ class TopicService {
                   .watch(correctnessProvider.notifier)
                   .update((state) => state = -1);
 
+              ref
+                  .watch(genericPracticeProvider.notifier)
+                  .update((state) => state = false);
+
               navigateToQuestion();
             },
             child: Text(topic.name)));

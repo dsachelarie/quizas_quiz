@@ -35,16 +35,7 @@ class QuestionBodyWidget extends ConsumerWidget {
       widgets.add(const Text("correct"));
       widgets.add(ElevatedButton(
           onPressed: () async {
-            Question newQuestion =
-                await ApiService.getQuestion(question.topicId);
-
-            ref
-                .watch(questionProvider.notifier)
-                .update((state) => state = newQuestion);
-
-            ref
-                .watch(correctnessProvider.notifier)
-                .update((state) => state = -1);
+            Question newQuestion = Question(0, 0, "", [], "");
 
             final prefs = await SharedPreferences.getInstance();
             int count = 0;
@@ -61,6 +52,20 @@ class QuestionBodyWidget extends ConsumerWidget {
 
             prefs.setInt('count', count + 1);
             prefs.setInt('count_topic_${question.topicId}', topicCount + 1);
+
+            if (ref.watch(genericPracticeProvider)) {
+              newQuestion = await QuestionService.getRandomQuestion(ref);
+            } else {
+              newQuestion = await ApiService.getQuestion(question.topicId);
+            }
+
+            ref
+                .watch(questionProvider.notifier)
+                .update((state) => state = newQuestion);
+
+            ref
+                .watch(correctnessProvider.notifier)
+                .update((state) => state = -1);
           },
           child: const Text("Next question")));
     }

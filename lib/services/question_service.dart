@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../models/topic.dart';
 import '../providers/providers.dart';
 import '../models/question.dart';
 import './api_service.dart';
@@ -34,6 +36,30 @@ class QuestionService {
     widgets.add(const Spacer());
 
     return widgets;
+  }
+
+  static Future<Question> getRandomQuestion(WidgetRef ref) async {
+    List<Topic> topics = ref.watch(topicsProvider);
+    final prefs = await SharedPreferences.getInstance();
+    int minCount = 0;
+    int minTopicId = 0;
+
+    for (Topic topic in topics) {
+      if (prefs.containsKey('count_topic_${topic.id}')) {
+        int count = prefs.getInt('count_topic_${topic.id}')!;
+
+        if (count < minCount) {
+          minCount = count;
+          minTopicId = topic.id;
+        }
+      } else {
+        minCount = 0;
+        minTopicId = topic.id;
+        break;
+      }
+    }
+
+    return ApiService.getQuestion(minTopicId);
   }
 
   static Question fromJson(int topicId, Map<String, dynamic> jsonData) {
