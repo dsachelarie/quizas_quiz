@@ -4,7 +4,9 @@ class Question {
   final String question;
   final List<dynamic> answers;
   final String correctAnswerPath;
+  final String? imageUrl;
 
   Question(this.topicId, this.id, this.question, this.answers,
-      this.correctAnswerPath);
+      this.correctAnswerPath,
+      {this.imageUrl = null});
 }

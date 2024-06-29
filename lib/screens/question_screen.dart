@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/question_service.dart';
+import '../widgets/question_body_widget.dart';
 import '../providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,8 +8,6 @@ class QuestionScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Widget> answers = QuestionService.getAnswerList(ref);
-
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
@@ -25,6 +23,6 @@ class QuestionScreen extends ConsumerWidget {
                 bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(30),
                     child: Row(children: ref.watch(topicsWidgetProvider)))),
-            body: Center(child: Column(children: answers))));
+            body: const QuestionBodyWidget()));
   }
 }

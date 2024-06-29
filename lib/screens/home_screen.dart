@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import '../services/topic_service.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../widgets/home_body_widget.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  void _navigateToQuestion(BuildContext context) {
-    Navigator.pushNamed(context, '/question/');
-  }
-
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Future<List<Widget>>? topics =
-        TopicService.getTopicList(ref, () => _navigateToQuestion(context));
-
+  Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
@@ -27,20 +19,6 @@ class HomeScreen extends ConsumerWidget {
                         },
                         child: const Text("Statistics",
                             style: TextStyle(fontSize: 20))))),
-            body: FutureBuilder<List<Widget>>(
-                future: topics,
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<Widget>> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Text("Retrieving topics...");
-                  } else if (snapshot.hasError) {
-                    return Text(
-                        "Error encountered while retrieving topics: ${snapshot.error}");
-                  } else if (!snapshot.hasData) {
-                    return const Text("No topics available");
-                  } else {
-                    return Center(child: Column(children: snapshot.data!));
-                  }
-                })));
+            body: const HomeBodyWidget()));
   }
 }
