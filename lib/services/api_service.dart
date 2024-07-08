@@ -11,6 +11,7 @@ class ApiService {
         await http.get(Uri.parse('https://dad-quiz-api.deno.dev/topics'));
 
     List<dynamic> topics = jsonDecode(response.body);
+
     return List<Topic>.from(topics.map(
       (jsonData) => TopicService.fromJson(jsonData),
     ));

@@ -30,7 +30,7 @@ class QuestionService {
                   .update((state) => state = 1);
             }
           },
-          child: Text(answer)));
+          child: Text(answer.toString())));
     }
 
     widgets.add(const Spacer());

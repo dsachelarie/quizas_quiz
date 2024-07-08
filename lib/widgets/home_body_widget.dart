@@ -56,7 +56,7 @@ class HomeBodyWidget extends ConsumerWidget {
 
             widgets.add(const Spacer());
 
-            return Center(child: Column(children: snapshot.data!));
+            return Center(child: Column(children: widgets));
           }
         });
   }

@@ -2,12 +2,12 @@
 
 Write your documentation for the project below.
 
-TODO: Name of the application
+**Name of the application:** Quizas Quiz
 
-TODO: Brief description of the application
+**Brief description of the application:**
 
-TODO: 3 key challenges faced during the project
+**3 key challenges faced during the project:** 
 
-TODO: 3 key learning moments from working on the project
+**3 key learning moments from working on the project:**
 
-TODO: list of dependencies and their versions
+**list of dependencies and their versions:**

@@ -39,7 +39,6 @@ class TopicService {
       widgets.add(const Spacer());
     }
 
-    ref.watch(topicsWidgetProvider.notifier).update((state) => state = widgets);
     ref.watch(topicsProvider.notifier).update((state) => state = topics);
 
     return widgets;
