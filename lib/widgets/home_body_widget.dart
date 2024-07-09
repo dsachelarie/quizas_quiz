@@ -36,7 +36,7 @@ class HomeBodyWidget extends ConsumerWidget {
                       .update((state) => state = true);
 
                   Question question =
-                      await QuestionService.getRandomQuestion(ref);
+                      await QuestionService.getGenericPracticeQuestion(ref);
 
                   ref
                       .watch(questionProvider.notifier)

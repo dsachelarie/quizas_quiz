@@ -38,17 +38,17 @@ class QuestionService {
     return widgets;
   }
 
-  static Future<Question> getRandomQuestion(WidgetRef ref) async {
+  static Future<Question> getGenericPracticeQuestion(WidgetRef ref) async {
     List<Topic> topics = ref.watch(topicsProvider);
     final prefs = await SharedPreferences.getInstance();
-    int minCount = 0;
+    int minCount = -1;
     int minTopicId = 0;
 
     for (Topic topic in topics) {
       if (prefs.containsKey('count_topic_${topic.id}')) {
         int count = prefs.getInt('count_topic_${topic.id}')!;
 
-        if (count < minCount) {
+        if (count < minCount || minCount == -1) {
           minCount = count;
           minTopicId = topic.id;
         }

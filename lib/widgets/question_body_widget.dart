@@ -54,7 +54,8 @@ class QuestionBodyWidget extends ConsumerWidget {
             prefs.setInt('count_topic_${question.topicId}', topicCount + 1);
 
             if (ref.watch(genericPracticeProvider)) {
-              newQuestion = await QuestionService.getRandomQuestion(ref);
+              newQuestion =
+                  await QuestionService.getGenericPracticeQuestion(ref);
             } else {
               newQuestion = await ApiService.getQuestion(question.topicId);
             }
