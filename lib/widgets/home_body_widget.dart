@@ -26,8 +26,23 @@ class HomeBodyWidget extends ConsumerWidget {
           } else if (!snapshot.hasData) {
             return const Text("No topics available");
           } else {
-            List<Widget> widgets = snapshot.data!;
+            List<Widget> widgets = [
+              const Spacer(),
+              const Text(
+                  "An application for solving quiezes from various topics.",
+                  style: TextStyle(fontSize: 20)),
+              const Text("You can either select the preferred topic yourself",
+                  style: TextStyle(fontSize: 20))
+            ];
+
+            widgets.addAll(snapshot.data!);
             navigateToQuestion() => _navigateToQuestion(context);
+
+            widgets.add(const Text(
+                "or get questions from your least practiced topics:",
+                style: TextStyle(fontSize: 20)));
+
+            widgets.add(const Spacer());
 
             widgets.add(ElevatedButton(
                 onPressed: () async {

@@ -14,13 +14,17 @@ class QuestionBodyWidget extends ConsumerWidget {
     Question question = ref.watch(questionProvider);
     List<Widget> widgets = [
       const Spacer(),
-      Text(question.question, style: const TextStyle(fontSize: 30))
+      Text(question.question, style: const TextStyle(fontSize: 30)),
+      const Spacer(),
     ];
 
     if (question.imageUrl != null) {
       widgets.add(Image.network(question.imageUrl!));
+      widgets.add(const Spacer());
     }
 
+    widgets.add(const Text("Choose one of the answers below:",
+        style: TextStyle(fontSize: 20)));
     widgets.addAll(QuestionService.getAnswerList(ref));
 
     int correctness = ref.watch(correctnessProvider);

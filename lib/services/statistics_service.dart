@@ -25,16 +25,21 @@ class StatisticsService {
     }
 
     List<Widget> widgets = [
-      Text('Total number of correctly answered questions: $totalCount')
+      const Spacer(),
+      const Text("Total number of correctly answered questions",
+          style: TextStyle(fontSize: 30)),
+      Text('- overall: $totalCount', style: const TextStyle(fontSize: 20))
     ];
     List<MapEntry<String, int>> countsList = counts.entries.toList();
 
     countsList.sort((a, b) => b.value.compareTo(a.value));
 
     for (MapEntry<String, int> count in countsList) {
-      widgets.add(Text(
-          'Total number of correctly answered questions for the topic "${count.key}": ${count.value}'));
+      widgets.add(Text('- for the topic "${count.key}": ${count.value}',
+          style: const TextStyle(fontSize: 20)));
     }
+
+    widgets.add(const Spacer());
 
     return widgets;
   }

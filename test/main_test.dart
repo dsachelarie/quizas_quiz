@@ -122,8 +122,7 @@ void main() {
     await tester.tap(find.widgetWithText(TextButton, "Statistics"));
     await tester.pumpAndSettle();
 
-    expect(find.text("Total number of correctly answered questions: 2"),
-        findsOneWidget);
+    expect(find.text("- overall: 2"), findsOneWidget);
   });
 
   testWidgets(
@@ -144,18 +143,9 @@ void main() {
     await tester.tap(find.widgetWithText(TextButton, "Statistics"));
     await tester.pumpAndSettle();
 
-    expect(
-        find.text(
-            'Total number of correctly answered questions for the topic "first topic": 3'),
-        findsOneWidget);
-    expect(
-        find.text(
-            'Total number of correctly answered questions for the topic "second topic": 2'),
-        findsOneWidget);
-    expect(
-        find.text(
-            'Total number of correctly answered questions for the topic "third topic": 1'),
-        findsOneWidget);
+    expect(find.text('- for the topic "first topic": 3'), findsOneWidget);
+    expect(find.text('- for the topic "second topic": 2'), findsOneWidget);
+    expect(find.text('- for the topic "third topic": 1'), findsOneWidget);
   });
 
   testWidgets(
