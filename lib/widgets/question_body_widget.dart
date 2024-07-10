@@ -11,24 +11,35 @@ class QuestionBodyWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double fontSize = 20;
+    double scaleFactor = 1;
+
+    if (MediaQuery.of(context).size.width < 700) {
+      fontSize = 13;
+      scaleFactor = 2;
+    }
+
     Question question = ref.watch(questionProvider);
     List<Widget> widgets = [
       const Spacer(),
-      Text(question.question, style: const TextStyle(fontSize: 30)),
+      Text(question.question, style: TextStyle(fontSize: fontSize + 10)),
       const Spacer(),
     ];
 
     if (question.imageUrl != null) {
-      widgets.add(Image.network(question.imageUrl!));
+      widgets.add(Image.network(question.imageUrl!, scale: scaleFactor));
       widgets.add(const Spacer());
     }
 
-    widgets.add(const Text("Choose one of the answers below:",
-        style: TextStyle(fontSize: 20)));
+    widgets.add(Text("Choose one of the answers below:",
+        style: TextStyle(fontSize: fontSize)));
     widgets.addAll(QuestionService.getAnswerList(ref));
 
     int correctness = ref.watch(correctnessProvider);
 
+    // If an answer selection has been made, show a text stating whether it was
+    // correct or incorrect, and if it was correct, also show a button for
+    // moving to the next question
     if (correctness == -1) {
       widgets.add(const Text(""));
       widgets.add(const Spacer());

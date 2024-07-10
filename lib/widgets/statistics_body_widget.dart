@@ -7,8 +7,16 @@ class StatisticsBodyWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double fontSize = 20;
+    bool lineBreak = false;
+
+    if (MediaQuery.of(context).size.width < 700) {
+      fontSize = 13;
+      lineBreak = true;
+    }
+
     return FutureBuilder<List<dynamic>>(
-        future: StatisticsService.getCounts(ref),
+        future: StatisticsService.getCounts(ref, fontSize, lineBreak),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Text("Retrieving statistics...");

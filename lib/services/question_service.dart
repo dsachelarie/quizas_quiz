@@ -22,9 +22,7 @@ class QuestionService {
               ref
                   .watch(correctnessProvider.notifier)
                   .update((state) => state = 0);
-            }
-
-            if (isCorrect) {
+            } else {
               ref
                   .watch(correctnessProvider.notifier)
                   .update((state) => state = 1);
@@ -44,6 +42,8 @@ class QuestionService {
     int minCount = -1;
     int minTopicId = 0;
 
+    // Find the topic with the smallest number of correct answers and get a
+    // question from that topic
     for (Topic topic in topics) {
       if (prefs.containsKey('count_topic_${topic.id}')) {
         int count = prefs.getInt('count_topic_${topic.id}')!;

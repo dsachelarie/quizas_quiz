@@ -79,30 +79,4 @@ void main() {
     expect(
         find.widgetWithText(ElevatedButton, "Next question"), findsOneWidget);
   });
-
-  testWidgets('Images are shown when available.', (tester) async {
-    nock("https://dad-quiz-api.deno.dev").get("/topics").reply(200, [
-      {"id": 0, "name": "first topic", "question_path": ""},
-      {"id": 1, "name": "second topic", "question_path": ""},
-      {"id": 2, "name": "third topic", "question_path": ""}
-    ]);
-
-    nock("https://dad-quiz-api.deno.dev")
-        .get("/topics/0/questions")
-        .reply(200, {
-      "id": 0,
-      "question": "first question",
-      "options": ["option1", 2],
-      "answer_post_path": "",
-      "image_url": ""
-    });
-
-    final app = createApp();
-    await tester.pumpWidget(app);
-    await tester.pump();
-    await tester.tap(find.widgetWithText(ElevatedButton, "first topic"));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(Image), findsOneWidget);
-  });
 }

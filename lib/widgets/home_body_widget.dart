@@ -14,6 +14,12 @@ class HomeBodyWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double fontSize = 20;
+
+    if (MediaQuery.of(context).size.width < 700) {
+      fontSize = 13;
+    }
+
     return FutureBuilder<List<Widget>>(
         future:
             TopicService.getTopicList(ref, () => _navigateToQuestion(context)),
@@ -28,19 +34,18 @@ class HomeBodyWidget extends ConsumerWidget {
           } else {
             List<Widget> widgets = [
               const Spacer(),
-              const Text(
-                  "An application for solving quiezes from various topics.",
-                  style: TextStyle(fontSize: 20)),
-              const Text("You can either select the preferred topic yourself",
-                  style: TextStyle(fontSize: 20))
+              Text("An application for solving quizzes from various topics.",
+                  style: TextStyle(fontSize: fontSize)),
+              Text("You can either select the preferred topic yourself",
+                  style: TextStyle(fontSize: fontSize))
             ];
 
             widgets.addAll(snapshot.data!);
             navigateToQuestion() => _navigateToQuestion(context);
 
-            widgets.add(const Text(
+            widgets.add(Text(
                 "or get questions from your least practiced topics:",
-                style: TextStyle(fontSize: 20)));
+                style: TextStyle(fontSize: fontSize)));
 
             widgets.add(const Spacer());
 
@@ -60,10 +65,6 @@ class HomeBodyWidget extends ConsumerWidget {
                   ref
                       .watch(correctnessProvider.notifier)
                       .update((state) => state = -1);
-
-                  ref
-                      .watch(genericPracticeProvider.notifier)
-                      .update((state) => state = true);
 
                   navigateToQuestion();
                 },

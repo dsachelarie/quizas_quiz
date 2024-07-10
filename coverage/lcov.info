@@ -3,11 +3,6 @@ DA:9,7
 LF:1
 LH:1
 end_of_record
-SF:lib\models\topic.dart
-DA:6,8
-LF:1
-LH:1
-end_of_record
 SF:lib\main.dart
 DA:7,0
 DA:8,0
@@ -22,7 +17,7 @@ LF:9
 LH:7
 end_of_record
 SF:lib\screens\home_screen.dart
-DA:5,11
+DA:5,13
 DA:7,7
 DA:9,7
 DA:10,7
@@ -35,7 +30,7 @@ LF:9
 LH:9
 end_of_record
 SF:lib\screens\question_screen.dart
-DA:6,11
+DA:6,13
 DA:8,4
 DA:10,4
 DA:11,4
@@ -47,13 +42,18 @@ LF:8
 LH:8
 end_of_record
 SF:lib\screens\statistics_screen.dart
-DA:5,11
+DA:5,13
 DA:7,5
 DA:9,5
 DA:10,5
 DA:11,5
 LF:5
 LH:5
+end_of_record
+SF:lib\models\topic.dart
+DA:6,8
+LF:1
+LH:1
 end_of_record
 SF:lib\providers\providers.dart
 DA:5,8
@@ -65,7 +65,7 @@ LF:5
 LH:5
 end_of_record
 SF:lib\widgets\home_body_widget.dart
-DA:9,10
+DA:9,12
 DA:11,4
 DA:12,4
 DA:15,7
@@ -100,7 +100,7 @@ LF:31
 LH:31
 end_of_record
 SF:lib\widgets\question_body_widget.dart
-DA:10,10
+DA:10,12
 DA:12,4
 DA:14,8
 DA:15,4
@@ -142,7 +142,7 @@ LF:38
 LH:20
 end_of_record
 SF:lib\widgets\statistics_body_widget.dart
-DA:6,10
+DA:6,12
 DA:8,5
 DA:10,5
 DA:11,5

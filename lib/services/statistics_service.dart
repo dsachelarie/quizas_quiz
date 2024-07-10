@@ -5,7 +5,8 @@ import '../models/topic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StatisticsService {
-  static Future<List<Widget>> getCounts(WidgetRef ref) async {
+  static Future<List<Widget>> getCounts(
+      WidgetRef ref, double fontSize, bool lineBreak) async {
     final prefs = await SharedPreferences.getInstance();
     int totalCount = 0;
 
@@ -24,21 +25,33 @@ class StatisticsService {
       }
     }
 
-    List<Widget> widgets = [
-      const Spacer(),
-      const Text("Total number of correctly answered questions",
-          style: TextStyle(fontSize: 30)),
-      Text('- overall: $totalCount', style: const TextStyle(fontSize: 20))
-    ];
+    List<Widget> widgets = [const Spacer()];
+
+    if (lineBreak) {
+      widgets.addAll([
+        Text("Total number of", style: TextStyle(fontSize: fontSize + 10)),
+        Text("correctly answered questions",
+            style: TextStyle(fontSize: fontSize + 10))
+      ]);
+    } else {
+      widgets.add(Text("Total number of correctly answered questions",
+          style: TextStyle(fontSize: fontSize + 10)));
+    }
+
+    widgets.add(
+        Text('- overall: $totalCount', style: TextStyle(fontSize: fontSize)));
+
     List<MapEntry<String, int>> countsList = counts.entries.toList();
 
+    // Show topic-specific statistics sorted from highest to lowest answer count
     countsList.sort((a, b) => b.value.compareTo(a.value));
 
     for (MapEntry<String, int> count in countsList) {
       widgets.add(Text('- for the topic "${count.key}": ${count.value}',
-          style: const TextStyle(fontSize: 20)));
+          style: TextStyle(fontSize: fontSize)));
     }
 
+    widgets.add(const Spacer());
     widgets.add(const Spacer());
 
     return widgets;
