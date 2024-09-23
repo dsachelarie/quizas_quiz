@@ -1,5 +1,9 @@
 # Device-Agnostic Design Course Project I - a9e342e8-ed65-40fe-8da0-93a149d0fe3a
 
+## Deployment link: https://dsachelarie.github.io/quizas_quiz_web/
+
+I apologize for not putting the right link in the submitted DEPLOYMENT.md. I forgot about this requirement and only realized that I incorrectly put the repo link in DEPLOYMENT.md after having already made the submission.
+
 **Name of the application:** Quizas Quiz
 
 **Brief description of the application:** An application for solving quizzes from different topics.
